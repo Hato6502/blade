@@ -1,0 +1,18 @@
+#!/usr/bin/env php
+<?php
+require_once "vendor/autoload.php";
+
+use Illuminate\Filesystem\Filesystem;
+use Illuminate\View\Compilers\BladeCompiler;
+
+if ($argc<2) {
+    die("Usage: blade (input blade path) [(output php path)]\n");
+}
+$input_path = $argv[1];
+$output_path = $argv[2]??preg_replace('/.blade.php$/', '', $input_path).'.php';
+
+$filesystem = new Filesystem();
+$compiler = new BladeCompiler($filesystem, sys_get_temp_dir());
+
+$compiler->compile($input_path);
+$filesystem->move($compiler->getCompiledPath($input_path), $output_path);

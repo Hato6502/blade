@@ -1,0 +1,16 @@
+{
+    "name": "hato6502/blade",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "hato6502",
+            "email": "erisuke12345@yahoo.co.jp"
+        }
+    ],
+    "bin": [
+        "blade"
+    ],
+    "require": {
+        "laravel/framework": "^5.8"
+    }
+}
